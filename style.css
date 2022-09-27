@@ -1,0 +1,9 @@
+.myIcon{
+  height: 50px;
+  width: 50px;
+}
+@font-face {
+  src: "Norse-Bold.otf";	
+  format('opentype');
+}
+*{font-family: 'Norse-Bold', sans-serif}
