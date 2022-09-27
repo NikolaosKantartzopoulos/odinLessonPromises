@@ -1,23 +1,28 @@
 let t1= document.getElementById("testH1");
 t1.style.backgroundColor = "red";
 let tr = true;
-let sr = false;
+let sr = true;
 
 
 let p1 = new Promise ((resolve,reject)=>{ 
   t1.style.backgroundColor = 'limegreen';
   tr
-  ? resolve('1')
+  ? resolve('This is the value i need')
   : reject('Rejected')
 }).then(
-    resolve => {
-      t1.textContent = `0 ${resolve}`; 
-      setTimeout(()=>{
+    resolve => new Promise ((resolve,reject)=> {
+      if(sr) {
+	t1.textContent = `0 ${sr}`; 
+        setTimeout(()=>{
 	  t1.textContent = `1200 ready to go violet`;
 	  t1.style.backgroundColor = 'violet';
 	}, 1200);
-      return 'yellow';
-    }, 
+        resolve ('yellow');
+      }
+      else {
+        reject(console.log('rejected sr'));
+      }
+    }), 
     a2 => {t1.textContent = a2})
   .then((arg1)=>{
       setTimeout(()=>{
